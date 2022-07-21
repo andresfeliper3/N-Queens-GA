@@ -7,6 +7,6 @@ Cuando("se revisa el cromosoma") do
   @genesChromosome = @chromosome.genes
 end
 
-Entonces("deben haber {int} números repetidos") do |int|
-  @chromosome.checkGenes(int)
+Entonces("no deben haber números repetidos") do 
+  expect(@chromosome.checkGenes(@genesChromosome)).to eq true
 end
