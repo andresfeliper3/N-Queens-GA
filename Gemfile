@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/andresfeliper3/N-Queens-GA" }
+git_source(:github) {|repo_name| "https://github.com/andresfeliper3/#{repo_name}" }
 
 # gem "rails"
 gem "cucumber"

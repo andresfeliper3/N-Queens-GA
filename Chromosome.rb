@@ -11,4 +11,9 @@ class Chromosome
     possibleGenes = (0...@length).to_a() #array from 0 to length-1
     possibleGenes.shuffle()
   end
+
+  #Returns true if all genes are different and the size is correct
+  def checkGenes(genesList)
+   genesList == genesList.uniq and genesList.size == @length
+  end  
 end
