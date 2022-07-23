@@ -15,3 +15,5 @@ Característica: Crear un cromosoma y funcionamiento de sus cualidades básicas.
   Escenario: Verificar que no se repitan genes en el cromosoma
     Cuando se revisa el cromosoma
     Entonces no deben haber números repetidos
+
+  
