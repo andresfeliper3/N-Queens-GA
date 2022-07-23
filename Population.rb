@@ -22,5 +22,22 @@ class Population
   def buildPool()
     
   end
+
+
+  #la idea es que torneo se haga varias veces(en un for) y otra funcion vaya agregando    los que escogio (Para recordar)
+  #Returns the best chromosome (Type Chromosome)
+  def tournament()
+    chromosome1 = rand(@lengthPopulation)
+    chromosome2 = rand(@lengthPopulation)
+    while chromosome2 == chromosome1 do
+        chromosome2 =  rand(@lengthPopulation)
+    end
+    if(@chromosomes[chromosome1].fitness >=  @chromosomes[chromosome2].fitness)
+      return @chromosomes[chromosome1]
+    else
+      return @chromosomes[chromosome2]
+    end
+  end 
+  
   
 end

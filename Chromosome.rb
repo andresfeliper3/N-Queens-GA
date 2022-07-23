@@ -19,8 +19,7 @@ class Chromosome
   end  
 
 
-  #Function returns the number of threats
-              
+  #Function returns the number of threats          
   def getThreat()
     threatInitial =0
     @genes.length.times do |i|
@@ -45,8 +44,8 @@ class Chromosome
     end
   end
 
-  #Returns an array (the genes of the child chromosome)
-  def cross(fatherChromosome)
+  #Returns child chromosome (Type Chromosome)
+  def cross(fatherChromosome) 
     cutOffPoint = rand(@genes.length)
     motherValue = @genes[cutOffPoint]
     fatherPoint = fatherChromosome.searchNumber(motherValue)
@@ -62,11 +61,11 @@ class Chromosome
         end
       end
     end
-  return sonChromosome.genes
+  return sonChromosome
   end
 
 
-  #Returns an array (the genes of the child chromosome)
+  #Returns the child chromosome (Type Chromosome)
   def mutation()
     cutOffPoint1 = rand(@genes.length)
     cutOffPoint2 = rand(@genes.length)
@@ -82,7 +81,7 @@ class Chromosome
         end
       end
     end
-   return sonChromosome.genes 
+   return sonChromosome
   end
 
   #Returns an integer (the fitness of that chromosome)
