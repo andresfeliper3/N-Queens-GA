@@ -49,6 +49,11 @@ class Chromosome
     cutOffPoint = rand(@genes.length)
     motherValue = @genes[cutOffPoint]
     fatherPoint = fatherChromosome.searchNumber(motherValue)
+    while cutOffPoint == fatherPoint do
+      cutOffPoint = rand(@genes.length)
+      motherValue = @genes[cutOffPoint]
+      fatherPoint = fatherChromosome.searchNumber(motherValue)
+    end
     sonChromosome = Chromosome.new(@genes.length)
     @genes.length.times do |i|
       if i==cutOffPoint
@@ -69,6 +74,9 @@ class Chromosome
   def mutation()
     cutOffPoint1 = rand(@genes.length)
     cutOffPoint2 = rand(@genes.length)
+    while cutOffPoint1 == cutOffPoint2 do
+      cutOffPoint2 = rand(@genes.length)
+    end
     sonChromosome = Chromosome.new(@genes.length)
     @genes.length.times do |i|
       if i==cutOffPoint1
