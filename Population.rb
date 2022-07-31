@@ -4,9 +4,18 @@ class Population
     @lengthPopulation = lengthPopulation
     @lengthChromosome = lengthChromosome
     @chromosomes = []
+    @fitnessPopulation = []
+    @sumOfFitness = 0
   end
 
-  attr_accessor :lengthPopulation, :lengthChromosome, :chromosomes  #getters and setters
+  attr_accessor :lengthPopulation, :lengthChromosome, :chromosomes, :fitnessPopulation  #getters and setters
+
+  def populationFitness()
+    for i in 0...@chromosomes.length do
+      @fitnessPopulation.append(@chromosomes[i].fitness())
+    end
+    @sumOfFitness = @fitnessPopulation.sum()
+  end
 
   def buildPopulation()
     #The following code is only for showing the chromosomes 
@@ -32,12 +41,47 @@ class Population
     while chromosome2 == chromosome1 do
         chromosome2 =  rand(@lengthPopulation)
     end
-    if(@chromosomes[chromosome1].fitness >=  @chromosomes[chromosome2].fitness)
+    if(@chromosomes[chromosome1].fitness() >=  @chromosomes[chromosome2].fitness())
       return @chromosomes[chromosome1]
     else
       return @chromosomes[chromosome2]
     end
-  end 
+  end
   
-  
+  def roulette()
+    probabilityPopulation = []
+    cumulativeProbability = []
+    
+    populationFitness()
+    totalFitness = @fitnessPopulation.sum #Get the total fitness from the population
+    #Calculate both probability and cumulative probability for each Chromosome based on their   fitness
+    for i in 0...@chromosomes.length do
+      probabilityPopulation.append(@fitnessPopulation[i].to_f/totalFitness)
+    end
+    
+    cumulativeProbability.append(probabilityPopulation[0])
+    
+    for i in 1...@chromosomes.length do
+      cumulativeProbability.append(probabilityPopulation[i] + cumulativeProbability[i-1])
+    end
+    
+    r = rand(0.0..1.0) 
+    
+    if(r < cumulativeProbability[0])
+      return @chromosomes[0]
+    else
+      for i in 1...cumulativeProbability.length do
+        if (cumulativeProbability[i-1] < r and r <= cumulativeProbability[i])
+          return @chromosomes[i]
+        end
+      end
+    end
 end
+
+  def universalRandomSampling()
+
+    
+  end
+end
+
+  

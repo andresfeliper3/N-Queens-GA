@@ -3,6 +3,8 @@ class Chromosome
   def initialize(length)
     @length = length
     @genes = []
+    @normalizedFitness = 0
+    @maxNumberOfConflicts = (@genes.length*(@genes.length-1))/2
     #@genes = buildGenes()
   end
   
@@ -82,7 +84,7 @@ class Chromosome
       if i==cutOffPoint1
         sonChromosome.genes.push(@genes[cutOffPoint2])
        else
-        if i== cutOffPoint2
+        if i == cutOffPoint2
           sonChromosome.genes.push(@genes[cutOffPoint1])
          else
           sonChromosome.genes.push(@genes[i])
@@ -91,12 +93,23 @@ class Chromosome
     end
    return sonChromosome
   end
-
+  
   #Returns an integer (the fitness of that chromosome)
-  def fitness
-    value = (@genes.length*(@genes.length-1))/2 - self.getThreat()
-    return value
+  def fitness()
+    value = @maxNumberOfConflicts - self.getThreat()
+    value
   end
 
+  #Returns a value between 0 and 1, from the lowest to the highest fitness level
+  def normalizedFitness()
+    @normalizedFitness = fitness()/@maxNumberOfConflicts
+    @normalizedFitness
+  end
+
+  #Receives the sumatory of the fitness of all chromosomes
+  #Returns the probability to be selected in a determined pool.
+  def probabilityToBeSelected(sumOfFitness)
+    @normalizedFitness/sumOfFitness
+  end
   
 end
