@@ -51,12 +51,18 @@ class Chromosome
     cutOffPoint = rand(@genes.length)
     motherValue = @genes[cutOffPoint]
     fatherPoint = fatherChromosome.searchNumber(motherValue)
-    while cutOffPoint == fatherPoint do
-      cutOffPoint = rand(@genes.length)
-      motherValue = @genes[cutOffPoint]
-      fatherPoint = fatherChromosome.searchNumber(motherValue)
-    end
     sonChromosome = Chromosome.new(@genes.length)
+    
+    if(@genes == fatherChromosome.genes)
+      sonChromosome.genes = @genes
+    else 
+     while motherValue == fatherChromosome.genes[cutOffPoint] do
+       cutOffPoint = rand(@genes.length)
+       motherValue = @genes[cutOffPoint]
+       fatherPoint = fatherChromosome.searchNumber(motherValue)
+     end
+    end
+    
     @genes.length.times do |i|
       if i==cutOffPoint
         sonChromosome.genes.push(motherValue) #put the value that the mother had at that cutoff point (taken from the random)

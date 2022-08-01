@@ -1,8 +1,8 @@
 require './Population.rb'
 
 def main
-  lengthPopulation = 10
-  lengthChromosome = 6
+  lengthPopulation = 100
+  lengthChromosome = 11
   lengthMatingPool = 6 # even
   generations = 100
 
@@ -14,7 +14,7 @@ def main
     population.selectionMethod(2, lengthMatingPool)
     p 'MATING POOL'
     population.showMatingPool
-    population.reproduction(1)
+    population.reproduction(2)
     p 'CHILDREN POPULATION'
     population.showChildrenPopulation
     p 'CURRENT POPULATION'
@@ -25,4 +25,4 @@ def main
   end
 end
 
-main()
+main
