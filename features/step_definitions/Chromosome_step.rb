@@ -8,17 +8,20 @@ end
 Cuando("se revisa el cromosoma") do
   @genesChromosome = @chromosome.genes
 end
-
+  
 Entonces("no deben haber números repetidos") do 
   expect(@chromosome.checkGenes(@genesChromosome)).to eq true
 end
 
-Cuando(/el cromosoma es (.+?)/) do |genes|
-  @chromosome = Chromosome.new(@chromosomeSize)
-  @chromosome.genes = genes
+Cuando("el cromosoma es {int},{int},{int},{int},{int},{int},{int},{int}") do |int1,int2,int3,int4,int5,int6,int7, int8|
+  @chromosome = Chromosome.new(@chromosomeSize.to_i)
+  list =[int1,int2,int3,int4,int5,int6,int7, int8]
+  @chromosome.genes = list
   @numberOfThreats = @chromosome.getThreat()
+  p "number of threads above #{@numberOfThreats}"
 end
 
 Entonces("debe indicar que hay {int} conflictos") do |int|
-   expect(@numberOfThreats).to eq int
+  p "number of threads below #{@numberOfThreats}"
+  expect(@numberOfThreats).to eq int
 end

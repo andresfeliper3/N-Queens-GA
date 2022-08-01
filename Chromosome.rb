@@ -4,11 +4,12 @@ class Chromosome
     @length = length
     @genes = []
     @normalizedFitness = 0
-    @maxNumberOfConflicts = (@genes.length*(@genes.length-1))/2
+    @maxNumberOfConflicts = (length*(length-1))/2
     #@genes = buildGenes()
   end
-  
-  attr_accessor :length, :genes #getters and setters
+
+  #getters and setters
+  attr_accessor :length, :genes, :normalizedFitness,:maxNumberOfConflicts
   
   def buildGenes()
     possibleGenes = (0...@length).to_a() #array from 0 to length-1
@@ -23,29 +24,28 @@ class Chromosome
 
   #Function returns the number of threats          
   def getThreat()
-    threatInitial =0
-    @genes.length.times do |i|
-      @genes.length.times do |j|
+    threatInitial = 0
+    for i in 0...@genes.length() do 
+      for j in i...@genes.length() do
         if (i != j)
-          if (@genes[i]-@genes[j]).abs() == (i-j).abs()
+          if ((@genes[i]-@genes[j]).abs() == (i-j).abs())
             threatInitial +=1
           end
         end
       end
     end
-    return threatInitial/2
+    return threatInitial
   end
-
 
   #Returns an integer 
   def searchNumber(value)
-    @genes.length.times do |i|
+    for i in 0...@genes.length() do
       if(@genes[i]==value)
         return i
       end
     end
   end
-
+  
   #Returns child chromosome (Type Chromosome)
   def cross(fatherChromosome) 
     cutOffPoint = rand(@genes.length)
@@ -70,6 +70,9 @@ class Chromosome
     end
   return sonChromosome
   end
+
+  
+
 
 
   #Returns the child chromosome (Type Chromosome)
@@ -102,7 +105,7 @@ class Chromosome
 
   #Returns a value between 0 and 1, from the lowest to the highest fitness level
   def normalizedFitness()
-    @normalizedFitness = fitness()/@maxNumberOfConflicts
+    @normalizedFitness = fitness().to_f/@maxNumberOfConflicts
     @normalizedFitness
   end
 
