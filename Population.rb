@@ -27,7 +27,7 @@ class Population
 
   def showPopulation()
     for i in 0...@chromosomes.length do
-      p @chromosomes[i].genes
+      p "#{@chromosomes[i].genes} - fitness #{@chromosomes[i].normalizedFitness()}"
     end
   end
 
