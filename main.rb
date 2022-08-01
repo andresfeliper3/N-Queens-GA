@@ -4,7 +4,7 @@ def main
   lengthPopulation = 10
   lengthChromosome = 6
   lengthMatingPool = 6 # even
-  generations = 10
+  generations = 100
 
   population = Population.new(lengthPopulation, lengthChromosome)
   population.buildPopulation
@@ -14,7 +14,7 @@ def main
     population.selectionMethod(2, lengthMatingPool)
     p 'MATING POOL'
     population.showMatingPool
-    population.reproduction(2)
+    population.reproduction(1)
     p 'CHILDREN POPULATION'
     population.showChildrenPopulation
     p 'CURRENT POPULATION'
