@@ -3,7 +3,7 @@ require './Population.rb'
 def main
   lengthPopulation = 100
   lengthChromosome = 11
-  lengthMatingPool = 6 # even
+  lengthMatingPool = 80 # even
   generations = 100
 
   population = Population.new(lengthPopulation, lengthChromosome)
@@ -11,14 +11,14 @@ def main
 
   (1..generations).each do |i|
     p "--------------GENERATION #{i}-------------------------"
-    population.selectionMethod(2, lengthMatingPool)
+    population.selectionMethod(1, lengthMatingPool)
     p 'MATING POOL'
     population.showMatingPool
     population.reproduction(2)
     p 'CHILDREN POPULATION'
     population.showChildrenPopulation
     p 'CURRENT POPULATION'
-    population.replacementSelection(1)
+    population.replacementSelection(2)
     population.showPopulation
     population.clearCurrentGeneration
     p "-------------END OF GENERATION #{i}------------------"

@@ -55,6 +55,7 @@ class Chromosome
     
     if(@genes == fatherChromosome.genes)
       sonChromosome.genes = @genes
+      return sonChromosome
     else 
      while motherValue == fatherChromosome.genes[cutOffPoint] do
        cutOffPoint = rand(@genes.length)
