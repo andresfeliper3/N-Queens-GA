@@ -1,0 +1,11 @@
+lengthPopulation: 100 
+lengthChromosome: 10 
+lengthMatingPool: 80 
+generations:  20 
+Selection Method: Torneo 
+Reproduction Method: Mutacion 
+Replacement Selection Method: Por mas debil 
+ 
+Results: 
+Gen 4 -> [[3, 1, 7, 9, 6, 2, 5, 8, 0, 4]]
+Gen 5 -> [[3, 1, 7, 9, 6, 2, 5, 8, 0, 4]]

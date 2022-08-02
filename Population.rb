@@ -21,19 +21,24 @@ class Population
 
   def showMatingPool()
     for i in 0...@matingPool.length do
-      p @matingPool[i].genes
+     # p @matingPool[i].genes
     end
   end
 
   def showPopulation()
+    fitChromosomes = []
     for i in 0...@chromosomes.length do
-      p "#{@chromosomes[i].genes} - fitness #{@chromosomes[i].normalizedFitness()}"
+      if @chromosomes[i].normalizedFitness() == 1
+        p "#{@chromosomes[i].genes} - fitness #{@chromosomes[i].normalizedFitness()}"
+        fitChromosomes.push(@chromosomes[i].genes)
+      end
     end
+    fitChromosomes
   end
 
   def showChildrenPopulation()
     for i in 0...@childrenPopulation.length do
-      p @childrenPopulation[i].genes
+      #p @childrenPopulation[i].genes
     end
   end
 
@@ -145,19 +150,19 @@ end
 #Replaces the population by weakest fitness. The weakest chromosomes get deleted
   def weakestReplacement(childrenPopulation)
     n = childrenPopulation.length
-    fitnessPop = @fitnessPopulation;
-    for i in 0...n do
-    currentIndex = fitnessPop.index(fitnessPop.min())
-    @chromosomes[fitnessPop.index(fitnessPop.min())] = childrenPopulation.pop()
-    fitnessPop.delete_at(currentIndex)
+    fitnessPop = @fitnessPopulation.clone();
+    while childrenPopulation.length > 0
+      currentIndex = fitnessPop.index(fitnessPop.min())
+      @chromosomes[fitnessPop.index(fitnessPop.min())] = childrenPopulation.pop()
+      fitnessPop.delete_at(currentIndex)
     end
   end
 
   #This method chooses the method of replacement in the population
   def replacementSelection(option)
-    if(option==1)
+    if(option==1) #random
       randomReplacement(@childrenPopulation)
-     elsif (option ==2)
+     elsif (option ==2) #weakest
       weakestReplacement(@childrenPopulation)
     end
   end
