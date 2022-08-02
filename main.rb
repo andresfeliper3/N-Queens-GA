@@ -3,8 +3,8 @@ require './Population.rb'
 def main
   lengthPopulation = 100
   lengthChromosome = 11
-  lengthMatingPool = 80 # even
-  generations = 100
+  lengthMatingPool = 98 # even
+  generations = 10
 
   population = Population.new(lengthPopulation, lengthChromosome)
   population.buildPopulation
