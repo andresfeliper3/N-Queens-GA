@@ -1,6 +1,6 @@
 require './Population.rb'
 
-def writeResults(fileName, args)
+def writeResults(fileName, args, solutionList)
   file = File.new(fileName, "w")
   file.puts("lengthPopulation: #{args[0]} \n")
   file.puts("lengthChromosome: #{args[1]} \n")
@@ -11,18 +11,15 @@ def writeResults(fileName, args)
   file.puts("Reproduction Method: #{args[5]} \n")
   file.puts("Replacement Selection Method: #{args[6]} \n\n")
   file.puts("Results: \n")
-  args[7].each do |generation, chromosomes|
-    if !chromosomes.empty?
-      file.puts("Generation #{generation} -> #{chromosomes}")
+  args[7].each do |generation, values|
+    if !values[1].empty?
+      file.puts("Generation #{generation} (#{values[1].length}) (#{values[0]}) -> #{values[1]} \n")
     end
   end
-  
-  #for i in 0...genes.length do
-   # file.puts("Chromosome " + (i + 1) + ": " chromosomes[i].genes.join(", ") + "\n")
-  #end
-  
-  #file.puts(array.join(", ") + "\n")
-  #file.puts("Siguiente línea")
+  #Solutions without repetitions
+  file.puts("------------------------------------ \n")
+  file.puts("The #{solutionList.length} solutions found are: \n")
+  file.puts(solutionList)
   
 end
 
@@ -63,18 +60,19 @@ def main
   lengthPopulation = 100
   lengthChromosome = 8
   lengthMatingPool = 60 # even
-  generations = 40
+  generations = 1000
   selectionMethod = 1
   reproductionMethod = 1
   replacementSelection = 2
   hash = {}
   argsForFile = [lengthPopulation, lengthChromosome, lengthMatingPool, generations, getSelectionMethodName(selectionMethod), getReproductionMethodName(reproductionMethod),
   getReplacementSelectionMethodName(replacementSelection), hash]
-   
+   solutionList = nil
   
   population = Population.new(lengthPopulation, lengthChromosome)
   population.buildPopulation
-
+  
+  
   (1..generations).each do |i|
     p "--------------GENERATION #{i}-------------------------"
     population.selectionMethod(selectionMethod, lengthMatingPool)
@@ -86,17 +84,27 @@ def main
     p 'CURRENT POPULATION'
     population.replacementSelection(replacementSelection)
     fitChromosomes = population.showPopulation()
-    hash[i] = fitChromosomes
+    
+    #unique solutions
+    solutionList = fitChromosomes.uniq
+    p "There are a total of #{solutionList.length} unique solutions"
+    #hash
+    hash[i] = ["U.S: #{solutionList.length}", fitChromosomes]
+    #clear
     population.clearCurrentGeneration
+  
     p "-------------END OF GENERATION #{i}------------------"
+  
   end
 
+  #remove repeated fit chromosomes in the solution list
+  
   puts "Do you want to keep this results? (y/n)"
   keepResults = gets.chomp
   if keepResults.downcase() != "n"
     puts "Write down the path and file name (path/filename), path is optional"
     path = gets.chomp
-    writeResults("out/#{path}", argsForFile)
+    writeResults("out/#{path}", argsForFile, solutionList)
   end
 end
 

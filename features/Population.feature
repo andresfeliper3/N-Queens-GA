@@ -1,64 +1,29 @@
 # language: es
 # encoding: utf-8
-# Archivo: Chromosome.feature
+# Archivo: Population.feature
 # Autor: Andrés Felipe Rincón
-# Fecha creación: 2022-07-20
-# Fecha última modificación: 2022-07-20
+# Fecha creación: 2022-08-02
+# Fecha última modificación: 2022-08-02
 # Versión: 0.2
 # Licencia: GPL
 
-Característica: Crear un cromosoma y funcionamiento de sus cualidades básicas.
+Característica: Crear una población y evaluación del funcionamiento de sus cualidades básicas.
 
-  Antecedentes: Crear un cromosoma
-  Dado que se necesita una población de cromosomas de tamaño 8, se crea un cromosoma
+  Antecedentes: Crear una población de cromosomas
+  Dado que se necesita una población de tamaño 100 de cromosomas de tamaño 8, se crea la población
 
-  Escenario: Verificar que no se repitan genes en el cromosoma
-    Cuando se revisa el cromosoma
-    Entonces no deben haber números repetidos
+  Escenario: Verificar la población inicial
+    Cuando se revisa la población 
+    Entonces la población debe ser de tamaño 100
+    Y cada elemento debe ser un cromosoma válido
 
-  Dado cromosomas de tamaño 8, se hacen pruebas 
+  Escenario: Revisar el método de selección Torneo
+    Cuando se seleccionan dos cromosomas para el torneo
+    Entonces el cromosoma ganador debe ser más apto que el perdedor
 
-  Escenario: Sin conflictos
-    Cuando el cromosoma es 1,3,5,7,2,0,6,4
-    Entonces debe indicar que hay 0 conflictos
-    Y la funcion de fitness normalizada debe ser 1
+  
+  
 
-    Cuando el cromosoma es 2,4,1,7,0,6,3,5  
-    Entonces debe indicar que hay 0 conflictos
-    Y la funcion de fitness normalizada debe ser 1
-   
-  Escenario: Algunos conflictos
-    Cuando el cromosoma es 1,3,4,7,2,0,6,5
-    Entonces debe indicar que hay 4 conflictos
-
-    Cuando el cromosoma es 6,4,7,1,2,5,0,3
-    Entonces debe indicar que hay 5 conflictos
-
-  Escenario: mutaciones
-    Cuando el cromosoma es 4,7,1,0,2,3,5,6
-    Y el cromosoma muta
-    Entonces debe indicar que hay 2 genes diferentes
-
-    Cuando el cromosoma es 1,3,5,7,2,0,6,4
-    Y el cromosoma muta
-    Entonces debe indicar que hay 2 genes diferentes
-
-    Cuando el cromosoma es 2,4,1,7,0,6,3,5  
-    Y el cromosoma muta
-    Entonces debe indicar que hay 2 genes diferentes
-
-  Escenario: cruzamiento respecto al padre
-    Cuando el cromosoma padre es 1,3,5,7,2,0,6,4 y el cromosoma madre es 2,4,1,7,0,6,3,5
-    Y los cromosomas se cruzan
-    Entonces debe indicar que hay 2 genes diferentes
-
-    Cuando el cromosoma padre es 4,7,1,0,2,3,5,6 y el cromosoma madre es 1,3,5,7,2,0,6,4
-    Y los cromosomas se cruzan
-    Entonces debe indicar que hay 2 genes diferentes
-
-    Cuando el cromosoma padre es 6,4,7,1,2,5,0,3 y el cromosoma madre es 2,4,1,7,0,6,3,5
-    Y los cromosomas se cruzan
-    Entonces debe indicar que hay 2 genes diferentes
     
     
 

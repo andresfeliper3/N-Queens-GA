@@ -9,8 +9,9 @@ class Population
     @childrenPopulation = []
     @sumOfFitness = 0
   end
-
-  attr_accessor :lengthPopulation, :lengthChromosome, :chromosomes, :fitnessPopulation, :matingPool  #getters and setters
+  
+#getters and setters
+  attr_accessor :lengthPopulation, :lengthChromosome, :chromosomes, :fitnessPopulation, :matingPool, :childrenPopulation, :sumOfFitness  
 
   def populationFitness()
     for i in 0...@chromosomes.length do
@@ -28,7 +29,7 @@ class Population
   def showPopulation()
     fitChromosomes = []
     for i in 0...@chromosomes.length do
-      if @chromosomes[i].normalizedFitness() == 1
+      if @chromosomes[i].normalizedFitness() == 1.0
         p "#{@chromosomes[i].genes} - fitness #{@chromosomes[i].normalizedFitness()}"
         fitChromosomes.push(@chromosomes[i].genes)
       end
@@ -50,16 +51,20 @@ class Population
       newChromosome.buildGenes()
       @chromosomes.push(newChromosome)
       #@chromosomes.push(Chromosome.new(@lengthChromosome))
-      p @chromosomes[i].genes
+    #  p @chromosomes[i].genes
     end
   end
 
 
-  #la idea es que torneo se haga varias veces(en un for) y otra funcion vaya agregando    los que escogio (Para recordar)
-  #Returns the best chromosome (Type Chromosome)
-  def tournament()
+  def selectCompetitorsTournament()
     chromosome1 = rand(@lengthPopulation)
     chromosome2 = rand(@lengthPopulation)
+    [chromosome1, chromosome2]
+  end
+  #la idea es que torneo se haga varias veces(en un for) y otra funcion vaya agregando    los que escogio (Para recordar)
+  #Returns the best chromosome (Type Chromosome)
+  def tournament(chromosome1, chromosome2) 
+    # The chromosomes cannot be the same
     while chromosome2 == chromosome1 do
         chromosome2 =  rand(@lengthPopulation)
     end
@@ -105,7 +110,8 @@ end
     self.populationFitness()
     if (option==1) #Tournament
       for i in 0...k do 
-        @matingPool.push(self.tournament())
+        selectedChromosomes = self.selectCompetitorsTournament()
+        @matingPool.push(self.tournament(selectedChromosomes[0], selectedChromosomes[1]))
       end
    elsif (option ==2) #Roulette
       for i in 0...k do
@@ -131,7 +137,7 @@ end
         i = i + 2
       end
      i = 0
-      while i < (@matingPool.length()*0.2).floor() do  #20% VARIABLE
+      while i < (@matingPool.length()*0.5).floor() do  #50% VARIABLE
         @childrenPopulation[i] = @childrenPopulation[i].mutation()
         i = i + 1
       end
@@ -139,31 +145,39 @@ end
   end
 
 #Replaces the population with the new children randomly
-  def randomReplacement(childrenPopulation)
-    n = childrenPopulation.length
+  def randomReplacement()
+    n = @childrenPopulation.length
     for i in 0...n do
       index = rand(0...@chromosomes.length)
-      @chromosomes[index] = childrenPopulation.pop()
+      @chromosomes[index] = @childrenPopulation.pop()
     end
   end
 
 #Replaces the population by weakest fitness. The weakest chromosomes get deleted
-  def weakestReplacement(childrenPopulation)
-    n = childrenPopulation.length
-    fitnessPop = @fitnessPopulation.clone();
-    while childrenPopulation.length > 0
-      currentIndex = fitnessPop.index(fitnessPop.min())
-      @chromosomes[fitnessPop.index(fitnessPop.min())] = childrenPopulation.pop()
-      fitnessPop.delete_at(currentIndex)
+  def weakestReplacement()
+    n = @childrenPopulation.length
+  
+    while @childrenPopulation.length > 0
+      currentIndex = @fitnessPopulation.index(@fitnessPopulation.min())
+      #p "Fitness #{fitnessPop}"
+      #p "###############"
+      #p "Fitness min #{@fitnessPopulation.min}"
+      #p "Index min #{currentIndex}" 
+      #p "Chromosome min #{@chromosomes[currentIndex].genes}"
+      #p "Last child #{@childrenPopulation[@childrenPopulation.length - 1].genes}"
+      
+      @chromosomes[currentIndex] = @childrenPopulation.pop()
+     
+      p# "New chromosome #{@chromosomes[currentIndex].genes}"
     end
   end
 
   #This method chooses the method of replacement in the population
   def replacementSelection(option)
     if(option==1) #random
-      randomReplacement(@childrenPopulation)
+      randomReplacement()
      elsif (option ==2) #weakest
-      weakestReplacement(@childrenPopulation)
+      weakestReplacement()
     end
   end
 
