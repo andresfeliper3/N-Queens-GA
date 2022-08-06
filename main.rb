@@ -59,11 +59,11 @@ end
 
 def main
   lengthPopulation = 100
-  lengthChromosome = 25
+  lengthChromosome = 8
   lengthMatingPool = 80 # even
-  generations = 300
-  selectionMethod = 1
-  reproductionMethod = 2
+  generations = 50
+  selectionMethod = 1 #2
+  reproductionMethod = 2 #1
   replacementSelection = 1
   hash = {}
   argsForFile = [lengthPopulation, lengthChromosome, lengthMatingPool, generations, getSelectionMethodName(selectionMethod), getReproductionMethodName(reproductionMethod),

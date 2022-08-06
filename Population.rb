@@ -6,7 +6,9 @@ class Population
     @chromosomes = []
     @matingPool = []
     @fitnessPopulation = []
-  
+    @threats = []
+    @timesThreat = []
+    @fitnessDiversity = []
     @childrenPopulation = []
     @sumOfFitness = 0
   end
@@ -20,6 +22,45 @@ class Population
     end
     @sumOfFitness = @fitnessPopulation.sum()
     p "population fitness sum #{@sumOfFitness}"
+  end
+  
+
+  def populationFitness2()
+    for i in 0...@chromosomes.length do
+      
+@fitnessPopulation.push(@chromosomes[i].normalizedFitness2(@fitnessDiversity.index(@fitnessDiversity.max()),@fitnessDiversity[i]))
+    end
+    @sumOfFitness = @fitnessPopulation.sum()
+    p "population fitness sum #{@sumOfFitness}"
+  end
+
+  def getThreats()
+    for i in 0...@chromosomese.length do
+      @threats.push(@chromsomes[i].getThreat())
+    end
+  end
+
+  def getTimes(number,threats)
+    acum =0
+    for i in 0...threats.length do
+      if number == threats[i]
+        acum = acum +1
+      end
+    end
+    return acum
+  end
+
+  def getTimesThreat()
+    getThreats()
+    for i in 0...@chromosome.length do
+      @timesThreat.push(getTimes(@chromosmes[i].getThreat(),@threats))
+    end
+  end
+
+  def getFitness()
+    for i in 0...@chromosome.length do
+      @fitnessDiversity.push(@chromosmes[i].fitness2(@timesThreat[i]))
+    end
   end
 
   def showMatingPool()
@@ -77,6 +118,18 @@ class Population
     end
   end
   
+    def tournament2(chromosome1, chromosome2) 
+    # The chromosomes cannot be the same
+    while chromosome2 == chromosome1 do
+        chromosome2 =  rand(@lengthPopulation)
+    end
+    if(@chromosomes[chromosome1].normalizedFitness2(@fitnessDiversity.index(@fitnessDiversity.max()),@fitnessDiversity[chromosome1]) >=  @chromosomes[chromosome2].normalizedFitness2(@fitnessDiversity.index(@fitnessDiversity.max()),@fitnessDiversity[chromosome2]))
+      return @chromosomes[chromosome1]
+    else
+      return @chromosomes[chromosome2]
+    end
+  end
+  
   def roulette()
     probabilityPopulation = []
     cumulativeProbability = []
@@ -103,9 +156,11 @@ class Population
 end
 
 
+
   #This function chooses the Selection Method and fills up the mating pool
   def selectionMethod(option,k)
-    self.populationFitness()
+    self.populationFitness() #ATAQUE
+    #self.populationFitness2() DIVERSIDAD
     if (option==1) #Tournament
       for i in 0...k do 
         selectedChromosomes = self.selectCompetitorsTournament()
@@ -148,6 +203,35 @@ end
       end
     end
   end
+
+  #No terminado
+  def reproduction2(option)
+   i = 0
+   if (option ==1) #mutation
+      while i < @matingPool.length() do
+        chromosome1 = @matingPool[i]
+        @childrenPopulation.push(chromosome1.mutation())
+        i = i + 1
+      end
+    elsif (option == 2) #cross and mutation
+      while i < @matingPool.length() do
+        chromosome1 = @matingPool[i]
+        chromosome2 = @matingPool[i+1]
+        if chromosome1.normalizedFitness2() >= chromosome2.normalizedFitness2()
+         @childrenPopulation.push(chromosome2.cross(chromosome1)) 
+        else
+         @childrenPopulation.push(chromosome1.cross(chromosome2))  
+        end 
+        i = i + 2
+      end
+     i = 0
+      while i < (@matingPool.length()*0.5).floor() do  #50% VARIABLE
+        @childrenPopulation[i] = @childrenPopulation[i].mutation()
+        i = i + 1
+      end
+    end
+  end
+
 
 #Replaces the population with the new children randomly
   def randomReplacement()

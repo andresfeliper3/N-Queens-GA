@@ -122,5 +122,16 @@ class Chromosome
   def probabilityToBeSelected(sumOfFitness)
     normalizedFitness()/sumOfFitness
   end
+
+  def fitness2(times)
+    value= self.getThreat()/times
+    value
+  end
+
+  def normalizedFitness2(fitnessLevel,fitnessChromome)
+    @normalizedFitness = 3/5 #(fitnessChromome/fitnessLevel.to_f)
+    @normalizedFitness
+  end   
+    
   
 end
