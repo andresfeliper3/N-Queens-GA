@@ -59,10 +59,10 @@ end
 
 def main
   lengthPopulation = 100
-  lengthChromosome = 8
-  lengthMatingPool = 180 # even
+  lengthChromosome = 25
+  lengthMatingPool = 80 # even
   generations = 300
-  selectionMethod = 2
+  selectionMethod = 1
   reproductionMethod = 2
   replacementSelection = 1
   hash = {}
