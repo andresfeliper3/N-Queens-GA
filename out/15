@@ -1,0 +1,12 @@
+lengthPopulation: 100 
+lengthChromosome: 10 
+lengthMatingPool: 80 
+generations:  300 
+------------------------------------ 
+Selection Method: Tournament 
+Reproduction Method: Mutation 
+Replacement Selection Method: Weakest Replacement 
+
+Results: 
+------------------------------------ 
+The 0 solutions found are: 

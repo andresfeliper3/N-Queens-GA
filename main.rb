@@ -1,5 +1,6 @@
 require './Population.rb'
 
+
 def writeResults(fileName, args, solutionList)
   file = File.new(fileName, "w")
   file.puts("lengthPopulation: #{args[0]} \n")
@@ -59,11 +60,11 @@ end
 def main
   lengthPopulation = 100
   lengthChromosome = 8
-  lengthMatingPool = 60 # even
-  generations = 1000
-  selectionMethod = 1
-  reproductionMethod = 1
-  replacementSelection = 2
+  lengthMatingPool = 180 # even
+  generations = 300
+  selectionMethod = 2
+  reproductionMethod = 2
+  replacementSelection = 1
   hash = {}
   argsForFile = [lengthPopulation, lengthChromosome, lengthMatingPool, generations, getSelectionMethodName(selectionMethod), getReproductionMethodName(reproductionMethod),
   getReplacementSelectionMethodName(replacementSelection), hash]
@@ -91,7 +92,7 @@ def main
     #hash
     hash[i] = ["U.S: #{solutionList.length}", fitChromosomes]
     #clear
-    population.clearCurrentGeneration
+    population.clearCurrentGeneration()
   
     p "-------------END OF GENERATION #{i}------------------"
   
@@ -110,5 +111,6 @@ end
 
 
 main
+
 
 

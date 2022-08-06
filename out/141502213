@@ -1,0 +1,13 @@
+lengthPopulation: 150 
+lengthChromosome: 14 
+lengthMatingPool: 120 
+generations:  300 
+------------------------------------ 
+Selection Method: Roulette 
+Reproduction Method: Cross and mutation 
+Replacement Selection Method: Random 
+
+Results: 
+Generation 52 (1) (U.S: 1) -> [[2, 4, 9, 7, 0, 11, 3, 12, 6, 8, 10, 1, 13, 5]] 
+------------------------------------ 
+The 0 solutions found are: 

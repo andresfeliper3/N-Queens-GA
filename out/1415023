@@ -1,0 +1,14 @@
+lengthPopulation: 150 
+lengthChromosome: 14 
+lengthMatingPool: 100 
+generations:  300 
+------------------------------------ 
+Selection Method: Tournament 
+Reproduction Method: Cross and mutation 
+Replacement Selection Method: Random 
+
+Results: 
+Generation 15 (1) (U.S: 1) -> [[8, 2, 4, 9, 11, 0, 3, 12, 6, 1, 13, 10, 5, 7]] 
+Generation 16 (1) (U.S: 1) -> [[8, 2, 4, 9, 11, 0, 3, 12, 6, 1, 13, 10, 5, 7]] 
+------------------------------------ 
+The 0 solutions found are: 

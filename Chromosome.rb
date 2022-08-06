@@ -5,11 +5,12 @@ class Chromosome
     @genes = []
     @normalizedFitness = 0
     @maxNumberOfConflicts = (length*(length-1))/2
+    @timesToBeSelected = 0 #for 
     #@genes = buildGenes()
   end
 
   #getters and setters
-  attr_accessor :length, :genes, :normalizedFitness,:maxNumberOfConflicts
+  attr_accessor :length, :genes, :normalizedFitness,:maxNumberOfConflicts, :timesToBeSelected
   
   def buildGenes()
     possibleGenes = (0...@length).to_a() #array from 0 to length-1
@@ -119,7 +120,7 @@ class Chromosome
   #Receives the sumatory of the fitness of all chromosomes
   #Returns the probability to be selected in a determined pool.
   def probabilityToBeSelected(sumOfFitness)
-    @normalizedFitness/sumOfFitness
+    normalizedFitness()/sumOfFitness
   end
   
 end

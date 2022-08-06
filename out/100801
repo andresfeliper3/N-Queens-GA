@@ -1,0 +1,28 @@
+lengthPopulation: 100 
+lengthChromosome: 10 
+lengthMatingPool: 80 
+generations:  300 
+------------------------------------ 
+Selection Method: Tournament 
+Reproduction Method: Cross and mutation 
+Replacement Selection Method: Random 
+
+Results: 
+Generation 5 (1) (U.S: 1) -> [[8, 4, 7, 3, 0, 2, 5, 9, 6, 1]] 
+Generation 32 (2) (U.S: 2) -> [[8, 3, 0, 4, 9, 1, 5, 7, 2, 6], [8, 5, 2, 6, 3, 0, 7, 9, 4, 1]] 
+Generation 33 (2) (U.S: 2) -> [[8, 3, 0, 4, 9, 1, 5, 7, 2, 6], [8, 5, 2, 6, 3, 0, 7, 9, 4, 1]] 
+Generation 34 (1) (U.S: 1) -> [[8, 5, 2, 9, 3, 0, 7, 4, 6, 1]] 
+Generation 121 (1) (U.S: 1) -> [[5, 0, 2, 9, 7, 1, 3, 8, 6, 4]] 
+Generation 147 (1) (U.S: 1) -> [[0, 5, 7, 1, 6, 8, 2, 4, 9, 3]] 
+Generation 171 (1) (U.S: 1) -> [[5, 2, 8, 3, 7, 9, 1, 6, 4, 0]] 
+Generation 172 (1) (U.S: 1) -> [[5, 2, 8, 3, 7, 9, 1, 6, 4, 0]] 
+Generation 217 (1) (U.S: 1) -> [[6, 1, 5, 7, 9, 0, 3, 8, 4, 2]] 
+Generation 246 (1) (U.S: 1) -> [[5, 7, 4, 1, 8, 6, 3, 0, 2, 9]] 
+Generation 247 (1) (U.S: 1) -> [[5, 8, 1, 9, 7, 2, 0, 3, 6, 4]] 
+Generation 248 (1) (U.S: 1) -> [[5, 8, 1, 9, 7, 2, 0, 3, 6, 4]] 
+Generation 268 (1) (U.S: 1) -> [[4, 7, 3, 0, 2, 8, 6, 9, 1, 5]] 
+Generation 269 (1) (U.S: 1) -> [[4, 7, 3, 0, 2, 8, 6, 9, 1, 5]] 
+Generation 270 (1) (U.S: 1) -> [[4, 7, 3, 0, 2, 8, 6, 9, 1, 5]] 
+Generation 271 (1) (U.S: 1) -> [[4, 7, 3, 0, 2, 8, 6, 9, 1, 5]] 
+------------------------------------ 
+The 0 solutions found are: 

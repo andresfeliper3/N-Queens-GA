@@ -1,0 +1,19 @@
+lengthPopulation: 150 
+lengthChromosome: 14 
+lengthMatingPool: 100 
+generations:  300 
+------------------------------------ 
+Selection Method: Tournament 
+Reproduction Method: Mutation 
+Replacement Selection Method: Random 
+
+Results: 
+Generation 25 (1) (U.S: 1) -> [[8, 5, 1, 13, 10, 6, 9, 12, 2, 11, 3, 7, 0, 4]] 
+Generation 26 (1) (U.S: 1) -> [[8, 5, 1, 13, 10, 6, 9, 12, 2, 11, 3, 7, 0, 4]] 
+Generation 27 (1) (U.S: 1) -> [[8, 5, 1, 13, 10, 6, 9, 12, 2, 11, 3, 7, 0, 4]] 
+Generation 28 (1) (U.S: 1) -> [[8, 5, 1, 13, 10, 6, 9, 12, 2, 11, 3, 7, 0, 4]] 
+Generation 29 (1) (U.S: 1) -> [[8, 5, 1, 13, 10, 6, 9, 12, 2, 11, 3, 7, 0, 4]] 
+Generation 30 (1) (U.S: 1) -> [[8, 5, 1, 13, 10, 6, 9, 12, 2, 11, 3, 7, 0, 4]] 
+Generation 31 (1) (U.S: 1) -> [[8, 5, 1, 13, 10, 6, 9, 12, 2, 11, 3, 7, 0, 4]] 
+------------------------------------ 
+The 0 solutions found are: 

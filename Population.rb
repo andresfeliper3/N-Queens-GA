@@ -6,6 +6,7 @@ class Population
     @chromosomes = []
     @matingPool = []
     @fitnessPopulation = []
+  
     @childrenPopulation = []
     @sumOfFitness = 0
   end
@@ -18,6 +19,7 @@ class Population
       @fitnessPopulation.push(@chromosomes[i].normalizedFitness())
     end
     @sumOfFitness = @fitnessPopulation.sum()
+    p "population fitness sum #{@sumOfFitness}"
   end
 
   def showMatingPool()
@@ -61,7 +63,7 @@ class Population
     chromosome2 = rand(@lengthPopulation)
     [chromosome1, chromosome2]
   end
-  #la idea es que torneo se haga varias veces(en un for) y otra funcion vaya agregando    los que escogio (Para recordar)
+
   #Returns the best chromosome (Type Chromosome)
   def tournament(chromosome1, chromosome2) 
     # The chromosomes cannot be the same
@@ -100,10 +102,6 @@ class Population
     end
 end
 
-  def universalRandomSampling()
-
-    
-  end
 
   #This function chooses the Selection Method and fills up the mating pool
   def selectionMethod(option,k)
@@ -117,6 +115,9 @@ end
       for i in 0...k do
         @matingPool.push(self.roulette())
       end
+    elsif (option == 3) 
+      universalRandomSampling(k)
+      p "mating pool size #{@matingPool.length}"
     end
   end
 
@@ -133,7 +134,11 @@ end
       while i < @matingPool.length() do
         chromosome1 = @matingPool[i]
         chromosome2 = @matingPool[i+1]
-        @childrenPopulation.push(chromosome1.cross(chromosome2))
+        if chromosome1.normalizedFitness() >= chromosome2.normalizedFitness()
+         @childrenPopulation.push(chromosome2.cross(chromosome1)) 
+        else
+         @childrenPopulation.push(chromosome1.cross(chromosome2))  
+        end 
         i = i + 2
       end
      i = 0
