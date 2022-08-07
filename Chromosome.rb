@@ -1,16 +1,16 @@
 class Chromosome
-  
   def initialize(length)
     @length = length
     @genes = []
     @normalizedFitness = 0
+    @normalizedDiversityFitness = 0
     @maxNumberOfConflicts = (length*(length-1))/2
     @timesToBeSelected = 0 #for 
     #@genes = buildGenes()
   end
 
   #getters and setters
-  attr_accessor :length, :genes, :normalizedFitness,:maxNumberOfConflicts, :timesToBeSelected
+  attr_accessor :length, :genes, :normalizedFitness,:normalizedDiversityFitness, :maxNumberOfConflicts, :timesToBeSelected
   
   def buildGenes()
     possibleGenes = (0...@length).to_a() #array from 0 to length-1
@@ -117,21 +117,11 @@ class Chromosome
     @normalizedFitness
   end
 
-  #Receives the sumatory of the fitness of all chromosomes
-  #Returns the probability to be selected in a determined pool.
-  def probabilityToBeSelected(sumOfFitness)
-    normalizedFitness()/sumOfFitness
-  end
-
+  #Receives the amount of chromosomes that have the same number of conflicts
   def fitness2(times)
-    value= self.getThreat()/times
-    value
+    @normalizedDiversityFitness = 1/times.to_f
+    @normalizedDiversityFitness   
   end
-
-  def normalizedFitness2(fitnessLevel,fitnessChromome)
-    @normalizedFitness = 3/5 #(fitnessChromome/fitnessLevel.to_f)
-    @normalizedFitness
-  end   
     
   
 end

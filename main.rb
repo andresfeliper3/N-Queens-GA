@@ -3,16 +3,17 @@ require './Population.rb'
 
 def writeResults(fileName, args, solutionList)
   file = File.new(fileName, "w")
-  file.puts("lengthPopulation: #{args[0]} \n")
-  file.puts("lengthChromosome: #{args[1]} \n")
-  file.puts("lengthMatingPool: #{args[2]} \n")
-  file.puts("generations:  #{args[3]} \n")
+  file.puts("Objective Function: #{args[0]} \n")
+  file.puts("lengthPopulation: #{args[1]} \n")
+  file.puts("lengthChromosome: #{args[2]} \n")
+  file.puts("lengthMatingPool: #{args[3]} \n")
+  file.puts("generations:  #{args[4]} \n")
   file.puts("------------------------------------ \n")
-  file.puts("Selection Method: #{args[4]} \n")
-  file.puts("Reproduction Method: #{args[5]} \n")
-  file.puts("Replacement Selection Method: #{args[6]} \n\n")
+  file.puts("Selection Method: #{args[5]} \n")
+  file.puts("Reproduction Method: #{args[6]} \n")
+  file.puts("Replacement Selection Method: #{args[7]} \n\n")
   file.puts("Results: \n")
-  args[7].each do |generation, values|
+  args[8].each do |generation, values|
     if !values[1].empty?
       file.puts("Generation #{generation} (#{values[1].length}) (#{values[0]}) -> #{values[1]} \n")
     end
@@ -57,33 +58,47 @@ def getReplacementSelectionMethodName(option)
   end
 end
 
+def getObjectiveFunctionMethodName(option)
+  case option
+    when 1
+      "Attack"
+    when 2
+      "Diversity"
+    when 3
+      "Attack and diversity"
+    else
+      "No objective function has been selected"
+  end
+end
+
 def main
+  objectiveFunction = 3 #1 Attacks - 2 Diversity - 3 Attack and diversity
   lengthPopulation = 100
   lengthChromosome = 8
   lengthMatingPool = 80 # even
-  generations = 50
-  selectionMethod = 1 #2
-  reproductionMethod = 2 #1
-  replacementSelection = 1
+  generations = 200
+  selectionMethod = 1  # 1 Tournament - 2 Roulette
+  reproductionMethod = 2 # 1 Mutation - 2 Cross and mutation
+  replacementSelection = 2 # 1 Random -  2 Weakest Replacement
   hash = {}
-  argsForFile = [lengthPopulation, lengthChromosome, lengthMatingPool, generations, getSelectionMethodName(selectionMethod), getReproductionMethodName(reproductionMethod),
+  argsForFile = [getObjectiveFunctionMethodName(objectiveFunction),lengthPopulation, lengthChromosome, lengthMatingPool, generations, getSelectionMethodName(selectionMethod), getReproductionMethodName(reproductionMethod),
   getReplacementSelectionMethodName(replacementSelection), hash]
    solutionList = nil
   
   population = Population.new(lengthPopulation, lengthChromosome)
-  population.buildPopulation
-  
+  population.buildPopulation()
+  population.showPopulation()
   
   (1..generations).each do |i|
     p "--------------GENERATION #{i}-------------------------"
-    population.selectionMethod(selectionMethod, lengthMatingPool)
+    population.selectionMethod(objectiveFunction, selectionMethod, lengthMatingPool)
     p 'MATING POOL'
     population.showMatingPool
-    population.reproduction(reproductionMethod)
-    p 'CHILDREN POPULATION'
-    population.showChildrenPopulation()
+    population.reproduction(objectiveFunction, reproductionMethod)
+   # p 'CHILDREN POPULATION'
+    #population.showChildrenPopulation()
     p 'CURRENT POPULATION'
-    population.replacementSelection(replacementSelection)
+    population.replacementSelection(objectiveFunction, replacementSelection)
     fitChromosomes = population.showPopulation()
     
     #unique solutions

@@ -1,0 +1,12 @@
+lengthPopulation: 100 
+lengthChromosome: 8 
+lengthMatingPool: 80 
+generations:  50 
+------------------------------------ 
+Selection Method: Roulette 
+Reproduction Method: Mutation 
+Replacement Selection Method: Random 
+
+Results: 
+------------------------------------ 
+The 0 solutions found are: 
