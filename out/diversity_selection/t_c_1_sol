@@ -1,0 +1,50 @@
+Objective Function: Diversity 
+lengthPopulation: 100 
+lengthChromosome: 8 
+lengthMatingPool: 80 
+generations:  100 
+------------------------------------ 
+Selection Method: Tournament 
+Reproduction Method: Cross and mutation 
+Replacement Selection Method: Weakest Replacement 
+
+Results: 
+Generation 72 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 73 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 74 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 75 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 76 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 77 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 78 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 79 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 80 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 81 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 82 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 83 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 84 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 85 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 86 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 87 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 88 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 89 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 90 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 91 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 92 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 93 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 94 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 95 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 96 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 97 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 98 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 99 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+Generation 100 (1) (U.S: 1) -> [[4, 2, 0, 6, 1, 7, 5, 3]] 
+------------------------------------ 
+The 1 solutions found are: 
+4
+2
+0
+6
+1
+7
+5
+3

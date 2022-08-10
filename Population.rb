@@ -135,7 +135,6 @@ class Population
   def tournament2(chromosome1, chromosome2)
     # The chromosomes cannot be the same
     chromosome2 = rand(@lengthPopulation) while chromosome2 == chromosome1
-    '''if(@chromosomes[chromosome1].normalizedFitness2(@fitnessDiversity.index(@fitnessDiversity.max()),@fitnessDiversity[chromosome1]) >=  @chromosomes[chromosome2].normalizedFitness2(@fitnessDiversity.index(@fitnessDiversity.max()),@fitnessDiversity[chromosome2]))'''
     if @chromosomes[chromosome1].normalizedDiversityFitness >= @chromosomes[chromosome2].normalizedDiversityFitness
 
       @chromosomes[chromosome1]

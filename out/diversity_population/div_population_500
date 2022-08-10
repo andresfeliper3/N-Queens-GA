@@ -1,0 +1,26 @@
+Objective Function: Diversity 
+lengthPopulation: 500 
+lengthChromosome: 8 
+lengthMatingPool: 400 
+generations:  100 
+------------------------------------ 
+Selection Method: Tournament 
+Reproduction Method: Mutation 
+Replacement Selection Method: Weakest Replacement 
+
+Results: 
+Generation 96 (1) (U.S: 1) -> [[1, 4, 6, 0, 2, 7, 5, 3]] 
+Generation 97 (1) (U.S: 1) -> [[1, 4, 6, 0, 2, 7, 5, 3]] 
+Generation 98 (1) (U.S: 1) -> [[1, 4, 6, 0, 2, 7, 5, 3]] 
+Generation 99 (1) (U.S: 1) -> [[1, 4, 6, 0, 2, 7, 5, 3]] 
+Generation 100 (1) (U.S: 1) -> [[1, 4, 6, 0, 2, 7, 5, 3]] 
+------------------------------------ 
+The 1 solutions found are: 
+1
+4
+6
+0
+2
+7
+5
+3

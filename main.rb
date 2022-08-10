@@ -18,11 +18,9 @@ def writeResults(fileName, args, solutionList)
       file.puts("Generation #{generation} (#{values[1].length}) (#{values[0]}) -> #{values[1]} \n")
     end
   end
-  #Solutions without repetitions
+
   file.puts("------------------------------------ \n")
-  file.puts("The #{solutionList.length} solutions found are: \n")
-  file.puts(solutionList)
-  
+
 end
 
 def getSelectionMethodName(option)
@@ -72,11 +70,11 @@ def getObjectiveFunctionMethodName(option)
 end
 
 def main
-  objectiveFunction = 3 #1 Attacks - 2 Diversity - 3 Attack and diversity
-  lengthPopulation = 100
+  objectiveFunction = 1 #1 Attacks - 2 Diversity - 3 Attack and diversity
+  lengthPopulation = 300
   lengthChromosome = 8
-  lengthMatingPool = 80 # even
-  generations = 200
+  lengthMatingPool = 200 # even
+  generations = 1000
   selectionMethod = 1  # 1 Tournament - 2 Roulette
   reproductionMethod = 2 # 1 Mutation - 2 Cross and mutation
   replacementSelection = 2 # 1 Random -  2 Weakest Replacement
@@ -118,8 +116,8 @@ def main
   puts "Do you want to keep this results? (y/n)"
   keepResults = gets.chomp
   if keepResults.downcase() != "n"
-    puts "Write down the path and file name (path/filename), path is optional"
-    path = gets.chomp
+    puts "Write down the path and file name (path/filename), path is optional and folders must already exist"
+    path = (gets.chomp).to_s
     writeResults("out/#{path}", argsForFile, solutionList)
   end
 end

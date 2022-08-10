@@ -5,8 +5,7 @@ class Chromosome
     @normalizedFitness = 0
     @normalizedDiversityFitness = 0
     @maxNumberOfConflicts = (length*(length-1))/2
-    @timesToBeSelected = 0 #for 
-    #@genes = buildGenes()
+    @timesToBeSelected = 0 
   end
 
   #getters and setters
@@ -117,7 +116,7 @@ class Chromosome
     @normalizedFitness
   end
 
-  #Receives the amount of chromosomes that have the same number of conflicts
+  #Receives the amount of chromosomes that have the same number of conflicts/threats
   def fitness2(times)
     @normalizedDiversityFitness = 1/times.to_f
     @normalizedDiversityFitness   

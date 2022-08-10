@@ -1,10 +1,11 @@
+Objective Function: Diversity 
 lengthPopulation: 500 
-lengthChromosome: 25 
-lengthMatingPool: 480 
-generations:  1000 
+lengthChromosome: 16 
+lengthMatingPool: 300 
+generations:  300 
 ------------------------------------ 
 Selection Method: Tournament 
-Reproduction Method: Cross and mutation 
+Reproduction Method: Mutation 
 Replacement Selection Method: Random 
 
 Results: 

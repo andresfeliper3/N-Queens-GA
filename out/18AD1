@@ -1,9 +1,10 @@
-lengthPopulation: 100 
-lengthChromosome: 8 
-lengthMatingPool: 80 
-generations:  50 
+Objective Function: Diversity 
+lengthPopulation: 500 
+lengthChromosome: 18 
+lengthMatingPool: 300 
+generations:  300 
 ------------------------------------ 
-Selection Method: Roulette 
+Selection Method: Tournament 
 Reproduction Method: Mutation 
 Replacement Selection Method: Random 
 
